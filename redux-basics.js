@@ -2,12 +2,16 @@
 const redux = require('redux');
 const createStore = redux.createStore;
 
+const initialState = {
+    counter: 0
+}
 
 // Reducer
 // 2 arguments: 
 // 1. Current state
 // 2. The action 
-const rootReducer = (state, action) => {
+// ES6 feature, can define an inital value in the paramaters - if state is undefined, takes initialState instead. 
+const rootReducer = (state = initialState, action) => {
     return state;
 }
 
