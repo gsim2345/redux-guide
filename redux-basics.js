@@ -33,7 +33,7 @@ const rootReducer = (state = initialState, action) => {
             counter: state.counter + action.value
         }
     }
-    
+
     return state;
 }
 
@@ -45,6 +45,13 @@ console.log(store.getState());
 // in this case it's undefined, because our rootReducer only returns the old state, but we never initialized that. 
 
 
+// Subscription
+store.subscribe(() => {
+    console.log('[Subscription]', store.getState());
+});
+// Comes before dispatch
+// Will be executed every time an action is dispatched, and mutates the store
+// Getting triggerred whenever the state is updated.
 
 
 // Dispatching action
@@ -57,5 +64,4 @@ store.dispatch({type: 'ADD_COUNTER', value: 10});
 // can be added any other properties. (value, id, name, whatever)
 console.log(store.getState());
 
-// Subscription
 
