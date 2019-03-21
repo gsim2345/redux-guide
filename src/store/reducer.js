@@ -24,9 +24,10 @@ const reducer = (state = initialState, action) => {
             return {
                 counter: state.counter - action.value
             }
+        // by default returns the initialState
+        default: return state
     }
     
-    return state;
 }
 
 export default reducer;
