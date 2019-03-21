@@ -34,10 +34,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
     return {
         // returns all 4 functions at once
+        // can add as many properties as we want after type
         onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
         onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
-        onAddCounter: () => dispatch({type: 'ADD'}),
-        onSubtractCounter: () => dispatch({type: 'SUBTRACT'})
+        onAddCounter: () => dispatch({type: 'ADD', value: 5}),
+        onSubtractCounter: () => dispatch({type: 'SUBTRACT', value: 5})
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
