@@ -49,4 +49,13 @@ const mapStateToProps = state => {
     };
 }
 // 2. Which actions we want to dispatch
-export default connect(mapStateToProps)(Counter);
+// uses the dispatch helper function as an argument , that comes with redux
+const mapDispatchToProps = dispatch => {
+    return {
+        onIncrementCounter: () => dispatch({type: 'INCREMENT'})
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+// in case one of the arguments are not needed:
+// connect(mapStateToProps)(Counter);
+// connect(null, mapDispatchToProps)(Counter);
