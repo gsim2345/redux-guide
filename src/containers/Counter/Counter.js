@@ -18,7 +18,7 @@ class Counter extends Component {
                 <button onClick={this.props.onStoreResult}>Store Result</button>
                 <ul>
                     {this.props.storedResults.map(strResult => (
-                        <li key={strResult.id} onClick={this.props.onDeleteResult}>{strResult.value}</li>
+                        <li key={strResult.id} onClick={() => this.props.onDeleteResult(strResult.id)}>{strResult.value}</li>
                     ))}
                     
                 </ul>
@@ -41,6 +41,7 @@ const mapStateToProps = state => {
 // 2. Which actions we want to dispatch
 // uses the dispatch helper function as an argument , that comes with redux
 const mapDispatchToProps = (dispatch) => {
+    
     return {
         // returns all functions listed at once
         // can add as many properties as we want after type
@@ -49,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
         onAddCounter: () => dispatch({type: 'ADD', value: 5}),
         onSubtractCounter: () => dispatch({type: 'SUBTRACT', value: 5}),
         onStoreResult: () => dispatch({type: 'STORE_RESULT'}),
-        onDeleteResult: () => dispatch({type: 'DELETE_RESULT'})
+        onDeleteResult: (id) => dispatch({type: 'DELETE_RESULT', resultElId: id})
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
