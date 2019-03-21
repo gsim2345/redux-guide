@@ -16,11 +16,11 @@ const reducer = (state = initialState, action) => {
             return {
                 counter: state.counter - 1
             }
-        case 'ADD_5':
+        case 'ADD':
             return {
                 counter: state.counter + 5
             }
-        case 'SUBTRACT_5' :
+        case 'SUBTRACT' :
             return {
                 counter: state.counter - 5
             }
