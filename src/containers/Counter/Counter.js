@@ -31,10 +31,10 @@ class Counter extends Component {
                 <CounterOutput value={this.props.ctr} />
                 {/* we no longer pass our counterChangedHandler function, but  our dispatching action function */}
                 {/*<CounterControl label="Increment" clicked={() => this.counterChangedHandler( 'inc' )} />*/}
-                <CounterControl label="Increment" clicked={this.props.onIncrementCounter} />
-                <CounterControl label="Decrement" clicked={() => this.counterChangedHandler( 'dec' )}  />
-                <CounterControl label="Add 5" clicked={() => this.counterChangedHandler( 'add', 5 )}  />
-                <CounterControl label="Subtract 5" clicked={() => this.counterChangedHandler( 'sub', 5 )}  />
+                <CounterControl label="Increment" clicked={() => this.props.changeCounter('INCREMENT')} />
+                <CounterControl label="Decrement" clicked={() => this.props.changeCounter('DECREMENT')}  />
+                <CounterControl label="Add 5" clicked={() => this.props.changeCounter('ADD_5')}  />
+                <CounterControl label="Subtract 5" clicked={() => this.props.changeCounter('SUBTRACT_5')}  />
             </div>
         );
     }
@@ -52,9 +52,9 @@ const mapStateToProps = state => {
 }
 // 2. Which actions we want to dispatch
 // uses the dispatch helper function as an argument , that comes with redux
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        onIncrementCounter: () => dispatch({type: 'INCREMENT'})
+        changeCounter: (actiontype) => dispatch({type: actiontype})
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
