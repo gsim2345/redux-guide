@@ -1,38 +1,11 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions';
 
 const initialState = {
-    counter: 0,
     results: []
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case actionTypes.INCREMENT:
-            // returns immutably updated state 
-            // clone the old object
-            // can do with .assign
-            const newState = Object.assign({}, state);
-            newState.counter = state.counter + 1
-            return  newState;
-        case actionTypes.DECREMENT:
-            // or can do the cloning with the spread operator: 
-            return {
-                // another immutable solution
-                // not cloning first can lead to data loss, as what it returns will be the new state.
-                // doesn't merge with state like in the original React state without Redux
-                ...state,
-                counter: state.counter - 1
-            }
-        case actionTypes.ADD:
-            return {
-                ...state,
-                counter: state.counter + action.value
-            }
-        case actionTypes.SUBTRACT :
-            return {
-                ...state,
-                counter: state.counter - action.value
-            }
         case actionTypes.STORE_RESULT: 
             return {
                 ...state,
