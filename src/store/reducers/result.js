@@ -11,7 +11,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 // concat is like push, but returns a new array, so it doesn't changes the original
                 // an immutable way of updating an array
-                results: state.results.concat({id: new Date(), value: state.counter})
+                results: state.results.concat({id: new Date(), value: action.result})
+                // if we are inside a reducer, and need to get to global state (like here we use value as state.counter), we need to get it as action payload => changed to action.result
             }
         case actionTypes.DELETE_RESULT:
             // normally we would do with splice, this however mutates the original array 
