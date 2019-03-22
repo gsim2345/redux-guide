@@ -1,3 +1,5 @@
+import * as actionTypes from './actions';
+
 const initialState = {
     counter: 0,
     results: []
@@ -5,14 +7,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'INCREMENT':
+        case actionTypes.INCREMENT:
             // returns immutably updated state 
             // clone the old object
             // can do with .assign
             const newState = Object.assign({}, state);
             newState.counter = state.counter + 1
             return  newState;
-        case 'DECREMENT':
+        case actionTypes.DECREMENT:
             // or can do the cloning with the spread operator: 
             return {
                 // another immutable solution
@@ -21,24 +23,24 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 counter: state.counter - 1
             }
-        case 'ADD':
+        case actionTypes.ADD:
             return {
                 ...state,
                 counter: state.counter + action.value
             }
-        case 'SUBTRACT' :
+        case actionTypes.SUBTRACT :
             return {
                 ...state,
                 counter: state.counter - action.value
             }
-        case 'STORE_RESULT': 
+        case actionTypes.STORE_RESULT: 
             return {
                 ...state,
                 // concat is like push, but returns a new array, so it doesn't changes the original
                 // an immutable way of updating an array
                 results: state.results.concat({id: new Date(), value: state.counter})
             }
-        case 'DELETE_RESULT':
+        case actionTypes.DELETE_RESULT:
             // normally we would do with splice, this however mutates the original array 
             const id = 2;
             //state.results.splice(id, 1);
