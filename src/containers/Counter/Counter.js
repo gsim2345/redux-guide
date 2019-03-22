@@ -35,8 +35,9 @@ class Counter extends Component {
 // 1. Which part of the whole application state we want to get. 
 const mapStateToProps = state => {
     return {
-        ctr: state.counter,
-        storedResults: state.results
+        // our state is also split when we split the reducers, so we need to refer to them explicitly: state.ctr.counter,  state.res.results
+        ctr: state.ctr.counter,
+        storedResults: state.res.results
     };
 }
 // 2. Which actions we want to dispatch
