@@ -10,9 +10,11 @@ import * as actionTypes from './actionTypes';
 // we need to execure saveResult to update the store
 
 export const saveResult = (res) => {
+    // we can put our data transformations here:
+    const updatedResult = res * 2;
     return {
         type: actionTypes.STORE_RESULT,
-        result: res
+        result: updatedResult
     }
 }
 
