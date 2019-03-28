@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import counterReducer from './store/reducers/counter';
 import resultReducer from './store/reducers/result';
+
 
 // when we split the reducer, we also split the state. ctr and res also refers to state. 
 const rootReducer = combineReducers({
@@ -39,7 +41,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // before we mount our app component to the DOM 
 // takes the reducer as input. 
 // we usually store the reducers in their own files
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 // we can add our middlewear to the store with 'applyMiddleware" - called enhancer - whatever you want with the store
 // can pass a list of middlewears to applyMiddleware
 
