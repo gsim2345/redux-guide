@@ -1,39 +1,4 @@
-
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const ADD = 'ADD';
-export const SUBTRACT = 'SUBTRACT';
-export const STORE_RESULT = 'STORE_RESULT';
-export const DELETE_RESULT = 'DELETE_RESULT';
-
-
-// we can also create actions with action creator function
-export const increment = () => {
-    // returns a type
-    return {
-        type: INCREMENT
-    }
-}; 
-
-export const decrement = () => {
-    return {
-        type: DECREMENT
-    }
-};
-
-export const add = (value) => {
-    return {
-        type: ADD,
-        val: value
-    }
-};
-
-export const subtract = (value) => {
-    return {
-        type: SUBTRACT,
-        val: value
-    }
-};
+import * as actionTypes from './actionTypes';
 
 // adding middleware: our creator function won't return the action itself, but will return a function, that will eventually dispatch an action.
 // only with that we can run async code
@@ -46,7 +11,7 @@ export const subtract = (value) => {
 
 export const saveResult = (res) => {
     return {
-        type: STORE_RESULT,
+        type: actionTypes.STORE_RESULT,
         result: res
     }
 }
@@ -63,7 +28,7 @@ export const storeResult = (res) => {
 
 export const deleteResult = (resElId) => {
     return {
-        type: DELETE_RESULT,
+        type: actionTypes.DELETE_RESULT,
         resultElId: resElId
 
     }
