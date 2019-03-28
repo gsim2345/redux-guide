@@ -7,11 +7,14 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch(action.type) {
         case actionTypes.STORE_RESULT: 
+            // Data changing logic can be also included here. 
+            // Better at put it here, into the reducer, than into the actions, so every logic is at one place
             return {
                 ...state,
                 // concat is like push, but returns a new array, so it doesn't changes the original
                 // an immutable way of updating an array
-                results: state.results.concat({id: new Date(), value: action.result})
+                // we can also add data transforming logic here: 
+                results: state.results.concat({id: new Date(), value: action.result * 2})
                 // if we are inside a reducer, and need to get to global state (like here we use value as state.counter), we need to get it as action payload => changed to action.result
             }
         case actionTypes.DELETE_RESULT:

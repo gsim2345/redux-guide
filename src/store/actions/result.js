@@ -11,10 +11,11 @@ import * as actionTypes from './actionTypes';
 
 export const saveResult = (res) => {
     // we can put our data transformations here:
-    const updatedResult = res * 2;
+    //const updatedResult = res * 2;
+    // better to put the logic though into the reducer, so every logic is at one place
     return {
         type: actionTypes.STORE_RESULT,
-        result: updatedResult
+        result: res
     }
 }
 
